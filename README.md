@@ -93,3 +93,41 @@
      ```sh
      argocd cluster add minikube
      ```
+
+4. Create An Application From A Git Repository
+
+   - First we need to set the current namespace to argocd running the following command:
+
+     ```sh
+     kubectl config set-context --current --namespace=argocd
+     ```
+
+    - Create a namespace for applications
+
+     ```sh
+     kubectl create namespace ray-application
+     ```
+
+   - Create the example guestbook application with the following command:
+
+     ```sh
+     argocd app create guestbook --repo https://github.com/argoproj/argocd-example-apps.git --path guestbook --dest-server https://kubernetes.default.svc --dest-namespace ray-application
+     ```
+
+   - Once the guestbook application is created, you can now view its status:
+
+     ```sh
+     argocd app get guestbook
+     ```
+
+   - To sync (deploy) the application, run:
+
+     ```sh
+     argocd app sync guestbook
+     ```
+
+   - To configure automated sync run (optional):
+
+     ```sh
+     argocd app set guestbook --sync-policy automated
+     ```
