@@ -81,3 +81,15 @@
      argocd login localhost:8080
      ```
 
+3. Register A Cluster To Deploy Apps To (Optional)
+
+   - List all clusters contexts in your current kubeconfig:
+
+     ```sh
+     kubectl config get-contexts -o name
+     ```
+
+   - Supply it to argocd cluster add CONTEXTNAME. For example, for docker-desktop context, run:
+     ```sh
+     argocd cluster add minikube
+     ```
