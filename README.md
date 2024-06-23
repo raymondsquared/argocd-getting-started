@@ -16,3 +16,20 @@
    ```sh
    make kube-start
    ```
+
+## Usage
+
+1. **Install ArgoCD**:
+
+   - Download Argo CD CLI on your machine:
+
+     ```sh
+     brew install argocd
+     ```
+
+   - Install Argo CD on your Kubernetes cluster:
+
+     ```sh
+     make argocd-install
+     ```
+
